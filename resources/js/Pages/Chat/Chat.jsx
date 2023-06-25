@@ -2,7 +2,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
 export default function Chat(props) {
-    console.log(props);
+    console.log(props)
     return (
         <AuthenticatedLayout
             auth={props.auth}
@@ -30,18 +30,23 @@ export default function Chat(props) {
                     <ul className="overflow-auto h-[32rem]">
                         <h2 className="my-2 mb-2 ml-2 text-lg text-gray-600">Chats</h2>
                         <li>
-                        <a
-                            className="flex items-center px-3 py-2 text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none">
-                            <img className="object-cover w-10 h-10 rounded-full"
-                            src="https://cdn.pixabay.com/photo/2018/09/12/12/14/man-3672010__340.jpg" alt="username" />
-                            <div className="w-full pb-2 flex-col justify-center items-center">
-                                <div className="flex justify-between">
-                                    <span className="block ml-2 font-semibold text-gray-600">Jhon Don</span>
-                                    <span className="block ml-2 text-sm text-gray-600">25 minutes</span>
-                                </div>
-                                <span className="block ml-2 text-sm text-gray-600">bye</span>
-                            </div>
-                        </a>
+                            {
+                                props.recentMessages.map((rm, index) => {
+                                    return <a
+                                    key={index}
+                                    className="flex items-center px-3 py-2 text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none">
+                                    <img className="object-cover w-10 h-10 rounded-full"
+                                    src="https://cdn.pixabay.com/photo/2018/09/12/12/14/man-3672010__340.jpg" alt="username" />
+                                    <div className="w-full pb-2 flex-col justify-center items-center">
+                                        <div className="flex justify-between">
+                                            <span className="block ml-2 font-semibold text-gray-600">{rm.name}</span>
+                                            {/* <span className="block ml-2 text-sm text-gray-600">{}</span> */}
+                                        </div>
+                                        <span className="block ml-2 text-sm text-gray-600">{rm.message}</span>
+                                    </div>
+                                </a>
+                                })
+                            }
                         </li>
                     </ul>
                     </div>
@@ -50,9 +55,9 @@ export default function Chat(props) {
                         <div className="relative flex items-center p-3 border-b border-gray-300">
                         <img className="object-cover w-10 h-10 rounded-full"
                             src="https://cdn.pixabay.com/photo/2018/01/15/07/51/woman-3083383__340.jpg" alt="username" />
-                        <span className="block ml-2 font-bold text-gray-600">Emma</span>
-                        <span className="absolute w-3 h-3 bg-green-600 rounded-full left-10 top-3">
-                        </span>
+                            <span className="block ml-2 font-bold text-gray-600">Emma</span>
+                            <span className="absolute w-3 h-3 bg-green-600 rounded-full left-10 top-3">
+                            </span>
                         </div>
                         <div className="relative w-full p-6 overflow-y-auto h-[40rem]">
                         <ul className="space-y-2">
