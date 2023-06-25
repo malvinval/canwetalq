@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Broadcast;
@@ -35,6 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/chat/{receiverId?}', [ChatController::class, 'index'])->name('chat');
+// Route::post('/chaty', [ChatController::class, 'store'])->name('chat');
 
 Broadcast::routes(['prefix' => 'api', 'middleware' => ['auth:api']]);
 

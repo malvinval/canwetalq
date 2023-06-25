@@ -34,6 +34,6 @@ class MessageSent implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new PresenceChannel('group'.$this->message->groupId);
+        return new PrivateChannel('chat-'.$this->message->senderId . "-" . $this->message->receiverId);
     }
 }

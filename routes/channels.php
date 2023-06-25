@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('group{groupId}', function ($user, $groupId) {
+Broadcast::channel('chat-{senderId}-{receiverId}', function ($user, $groupId) {
     if (true) {
         return ['id' => $user->id, 'name' => $user->name];
     }
